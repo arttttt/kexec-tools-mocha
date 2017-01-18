@@ -308,16 +308,9 @@ static int load_dtb_image(const char *path, char **dtb_img, off_t *dtb_img_len)
 		return 0;
 	}
 
-	if(read(fd, buff, 4) != 4 || strncmp(buff, "QCDT", 4) != 0)
-	{
-		fprintf(stderr, "DTB: Invalid dtb image header in %s\n", path);
-		close(fd);
-		return 0;
-	}
-
-	// skip header
-	size = info.st_size - 2048;
-	lseek(fd, 2048, SEEK_SET);
+	// no skip // Greetings from Russia
+	size = info.st_size;
+	lseek(fd, 0, SEEK_SET);
 
 	img = xmalloc(size);
 	if(read(fd, img, size) != size)
