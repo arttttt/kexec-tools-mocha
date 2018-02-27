@@ -170,7 +170,7 @@ static int tegra_add_extra_regs(void *dtb_buf)
 }
 
 const struct arm_mach arm_mach_tegra = {
-    .boardnames = { "mocha", NULL },
+    .boardnames = { "mocha", "tn8", NULL },
     .choose_dtb = tegra_choose_dtb,
     .add_extra_regs = tegra_add_extra_regs
 };
